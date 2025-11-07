@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Request Form</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    padding: 20px;
+}
+
+.main-form {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.table {
+    width: 50%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+td input {
+    border: none;
+    outline: none;
+    text-align: center;
+    width: 100%;
+    background: transparent;
+    font-style: italic;
+}
+
+.bold-letter {
+    font-weight: bold;
+}
+.h2right p input{
+    border: none;
+    outline: none;
+}
+
+.headryt {
+    border: 1px dashed black;
+    padding: 8px;
+    text-align: center;
+}
+.header2{
+    display: flex;
+    justify-content: space-between;
+}
+.star{
+    text-align: center;
+    font-size: 2rem;
+}
+
+.box3 {
+    padding: 20px;
+}
+.box4{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.box4 input {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    background: transparent;
+    font-style: italic;
+}
+
+.box3 p {
+    padding: 5px 0;
+    font-weight: bold;
+}
+
+.box3 input {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    background: transparent;
+    font-style: italic;
+}
+
+.certificate-box {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.other-input{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    width: 100%;
+    margin: 25px 0px;
+}
+
+
+.certificate-checkbox {
+    margin-right: 10px;
+}
+
+.address-line {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    border: none;
+    border-bottom: 1px solid black;
+    font-style: italic;
+}
+
+.approval-box, .office-use, .notes {
+    padding: 20px;
+    font-weight: bold;
+}
+.approval-box{
+    display: flex;
+    justify-content: space-between;
+}
+.spaner{
+    border-top: 1px solid black;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.spity{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    margin: 40px 0px;
+    font-weight: bold;
+}
+    </style>
+</head>
+<body>
+
+    <form action="#" class="main-form">
+        
+        <!-- Header Section -->
+        <div class="header">
+            <table class="table">
+                <tr>
+                    <td class="bold-letter">S</td>
+                    <td><input type="text" placeholder="Dept." class="faded-text"></td>
+                    <td><input type="text" placeholder="App.No" class="faded-text"></td>
+                    <td><input type="text" placeholder="Request" class="faded-text"></td>
+                    <td><input type="text" placeholder="YYYY" class="faded-text"></td>
+                </tr>
+            </table>
+            <p class="headryt">Form-S1</p>
+        </div>
+
+        <!-- Address Section -->
+        <div class="header2">
+            <div class="h2left">
+                
+                <pre>
+     To
+     The Director,
+     CMR Technical Campus,
+     Kandlakoya (V), Medchal Road,
+     Hyderabad – 501401.
+                </pre>
+            </div>
+            <div class="h2right">
+                <p>
+                    Date: <input type="text" placeholder="DD / MM / YYYY" name="date" id="date">
+                </p> 
+            </div>
+        </div>
+
+        <!-- Subject & Introduction -->
+        <div class="box3">
+            <p>Sir,</p>
+            <p >Sub: Request for issue of <input type="text" class="reason"> - Reg.</p>
+            <p class="star"></p>
+        </div>
+
+        <!-- Student Information -->
+        <div class="box3">
+            <p>
+                I, Mr./Ms. <input type="text" class="selfname"> S/D/o <input type="text" class="parentname"> am a
+                Student of B.Tech/M.Tech/MBA <br> <input type="text" class="branch"> Branch <input type="text" class="Year"> Year <input type="text" class="Sem"> Sem
+                bearing Roll No.<input type="text" class="rollno">.
+            </p>
+            <p>I request you to kindly issue the following certificate for the purpose of <input type="text" class="certificate-purpose"></p>
+        </div>
+
+        <!-- Certificate Selection -->
+        <div class="certificate-box">
+            <div class="ben">
+                <div><input type="checkbox" class="certificate-checkbox"> Bonafide</div>
+                <div><input type="checkbox" class="certificate-checkbox"> Custodian</div>
+                <div><input type="checkbox" class="certificate-checkbox"> Transfer Certificate (TC)</div>
+                <div><input type="checkbox" class="certificate-checkbox"> Medium of Instructions</div>
+                <div><input type="checkbox" class="certificate-checkbox"> Internship Letter</div>
+                <div><input type="checkbox" class="certificate-checkbox"> Project Permission Letter</div>
+            </div>
+            <div class="ben">
+                <div><input type="checkbox" class="certificate-checkbox"> No Dues Certificate</div>
+                <div><input type="checkbox" class="certificate-checkbox"> Migration Certificate</div>
+                <div><input type="checkbox" class="certificate-checkbox"> Provisional Certificate</div>
+                <div><input type="checkbox" class="certificate-checkbox"> Consolidated Marks Memo</div>
+                <div><input type="checkbox" class="certificate-checkbox"> Degree Certificate</div>
+                <div><input type="checkbox" class="certificate-checkbox"> Any other</div>
+            </div>
+           
+        </div>
+        <label>Any other: <input type="text" class="other-input"></label>
+        <!-- Signature and Address Section -->
+        <div class="box4">
+        <div class="venom">
+            <p>Yours Sincerely,</p>
+            <p>Residential Address:</p>
+            <input type="text" class="address-line">
+            <input type="text" class="address-line">
+            <input type="text" class="address-line">
+        </div>
+            <div class="venom">
+            <p>Sign: <input type="text" class="signature"></p>
+            <p>Name: <input type="text" class="name"></p>
+            <p>Roll No: <input type="text" class="rollno"></p>
+            <p>Mobile No: <input type="text" class="mobile"></p>
+            <p>Branch: <input type="text" class="branch"></p>
+            </div>
+        </div>
+
+        <!-- Mentor and HOD Section -->
+        <div class="approval-box">
+            <p>Mentor</p>
+            <p>HOD</p>
+        </div>
+        <div class="spaner">
+        
+            For Office Use Only</div>
+
+        <!-- Office Use Only Section -->
+        <div class="approval-box">
+            
+            <p>Clerk</p>
+            <p>AO</p>
+        </div>
+        <div class="spaner"> For LoR/Transcripts/Internships</div>
+          <div class="spity">
+            <p>TPO</p>
+            <p>Higher Education Cell</p>
+            <p>CE</p>
+          </div>
+        <!-- Important Notes -->
+        <div class="notes">
+            <p>Note: Submit the duly filled-in form after obtaining signatures from respective Authorities in:</p>
+            <p>Admin Office (For 1-4), Concerned Department (For 5-7) & Examination Section (For 8-11)</p>
+        </div>
+
+        <button type="button" id="downloadPDF">Download PDF</button>
+
+
+    </form>
+ <!-- Add jsPDF and html2canvas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<!-- Your JavaScript file -->
+<script src="script.js"></script>
+
+</body>
+</html>

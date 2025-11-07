@@ -1,0 +1,146 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    padding: 20px;
+}
+
+.main-form {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.table {
+    width: 50%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+td input {
+    border: none;
+    outline: none;
+    text-align: center;
+    width: 100%;
+    background: transparent;
+    font-style: italic;
+}
+
+.bold-letter {
+    font-weight: bold;
+}
+.h2right p input{
+    border: none;
+    outline: none;
+}
+
+.headryt {
+    border: 1px dashed black;
+    padding: 8px;
+    text-align: center;
+}
+.header2{
+    display: flex;
+    justify-content: space-between;
+}
+.star{
+    text-align: center;
+    font-size: 2rem;
+}
+
+.box3 {
+    padding: 20px;
+}
+.box4{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.box4 input {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    background: transparent;
+    font-style: italic;
+}
+
+.box3 p {
+    padding: 5px 0;
+    font-weight: bold;
+}
+
+.box3 input {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    background: transparent;
+    font-style: italic;
+}
+
+.certificate-box {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.other-input{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    width: 100%;
+    margin: 25px 0px;
+}
+
+
+.certificate-checkbox {
+    margin-right: 10px;
+}
+
+.address-line {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    border: none;
+    border-bottom: 1px solid black;
+    font-style: italic;
+}
+
+.approval-box, .office-use, .notes {
+    padding: 20px;
+    font-weight: bold;
+}
+.approval-box{
+    display: flex;
+    justify-content: space-between;
+}
+.spaner{
+    border-top: 1px solid black;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.spity{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    margin: 40px 0px;
+    font-weight: bold;
+}

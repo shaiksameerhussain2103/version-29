@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CMR Technical Campus (Demo)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#0033A0;--brand-2:#0b5fff;--gold:#FFD166;--ink:#0f172a;--muted:#556085;--bg:#f6f8ff;--card:#ffffff}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+a{text-decoration:none;color:var(--brand)}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.topbar{background:var(--brand);color:#fff;font-size:14px}
+.topbar .container{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:8px 20px}
+.badge{display:inline-flex;align-items:center;gap:8px;background:#0a2d7a;color:#fff;border:1px solid rgba(255,255,255,.15);padding:6px 10px;border-radius:999px}
+.header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #e7e9f3}
+.header .container{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo img{height:48px}
+.nav{display:flex;gap:22px;align-items:center}
+.nav a{color:#0f172a;font-weight:600}
+.nav a:hover{color:var(--brand)}
+#menu-btn{display:none}
+@media(max-width:980px){
+  .nav{position:fixed;inset:72px 0 auto 0;background:#fff;flex-direction:column;padding:18px 20px;border-bottom:1px solid #e7e9f3;transform:translateY(-120%);transition:.3s}
+  .nav.open{transform:translateY(0)}
+  #menu-btn{display:inline-flex;align-items:center;justify-content:center;height:40px;width:40px;border:1px solid #e7e9f3;border-radius:8px;background:#fff}
+}
+.hero{position:relative;background:linear-gradient(180deg,rgba(0,29,97,.85),rgba(0,29,97,.6)),url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;color:#fff}
+.hero .container{padding:84px 20px 96px}
+.hero h1{font-size:44px;line-height:1.1;margin:0 0 14px}
+.hero p{max-width:760px;font-size:18px;opacity:.95;margin:0 0 22px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--brand);padding:12px 18px;border-radius:10px;font-weight:700;border:2px solid #fff}
+.btn.alt{background:transparent;color:#fff;border-color:#fff}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:28px}
+.stat{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(6px);border-radius:14px;padding:14px 16px;text-align:center}
+.stat h3{font-size:26px;color:#fff;margin:2px 0}
+.stat p{margin:0;color:#e8edff;font-size:13px}
+@media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}}
+.section{padding:56px 0}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--card);border:1px solid #e7e9f3;border-radius:14px;box-shadow:0 6px 18px rgba(16,24,40,.06)}
+.card .pad{padding:18px}
+.card h3{margin:0 0 6px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.kpi{background:#fff;border:1px solid #e7e9f3;border-radius:14px;padding:18px;text-align:center}
+.kpi b{font-size:24px;color:var(--brand)}
+@media(max-width:900px){.grid-3,.kpis{grid-template-columns:1fr}}
+.section h2{margin:0 0 14px;font-size:28px}
+.sub{color:var(--muted);margin:0 0 20px}
+.ticker{display:flex;gap:12px;overflow:auto;padding-bottom:6px}
+.tag{white-space:nowrap;background:#eef2ff;color:#1e3a8a;border:1px solid #dbe3ff;padding:8px 12px;border-radius:999px;font-weight:600}
+.list{display:grid;gap:12px}
+.item{display:flex;gap:14px;background:#fff;border:1px solid #e7e9f3;padding:12px;border-radius:12px}
+.item time{font-weight:700;color:var(--brand)}
+.placements{overflow:auto}
+.table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #e7e9f3;border-radius:12px;overflow:hidden}
+.table th,.table td{padding:12px 14px;border-bottom:1px solid #eef1f8;font-size:14px}
+.table th{background:#f8faff;text-align:left}
+.recruiters{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.rec{background:#fff;border:1px solid #e7e9f3;border-radius:12px;display:flex;align-items:center;justify-content:center;height:72px}
+@media(max-width:900px){.recruiters{grid-template-columns:repeat(2,1fr)}}
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px}
+.gallery img{width:100%;height:220px;object-fit:cover;border-radius:12px}
+@media(max-width:900px){.gallery{grid-template-columns:1fr}}
+.cta-band{background:linear-gradient(90deg,#0b5fff,#0033a0);color:#fff;border-radius:14px;padding:22px}
+.cta-band .row{display:flex;align-items:center;justify-content:space-between;gap:16px}
+@media(max-width:900px){.cta-band .row{flex-direction:column;align-items:flex-start}}
+.footer{background:#0b1a3a;color:#c7d2fe;margin-top:40px}
+.footer .container{display:grid;grid-template-columns:2fr 1fr 1fr;gap:20px;padding:32px 20px}
+.footer h4{margin:0 0 10px;color:#fff}
+.footer a{color:#c7d2fe}
+.footbar{border-top:1px solid rgba(255,255,255,.12);padding:12px 0;color:#9db0ff;text-align:center}
+.searchbar{display:flex;gap:10px}
+.searchbar input{flex:1;padding:12px 14px;border:1px solid #d8def0;border-radius:10px}
+.searchbar button{padding:12px 16px;background:var(--brand);color:#fff;border:none;border-radius:10px;font-weight:700}
+.filters{display:flex;gap:8px;margin:10px 0 14px}
+.filters button{padding:8px 12px;border-radius:999px;border:1px solid #d8def0;background:#fff}
+.filters button.active{background:#eef2ff;color:#1e3a8a;border-color:#cfd9ff}
+#chat-toggle{position:fixed;right:20px;bottom:20px;width:64px;height:64px;border-radius:50%;background:var(--brand);color:#fff;border:none;font-size:26px;box-shadow:0 12px 24px rgba(0,0,0,.18);z-index:10000}
+#chat-frame{position:fixed;right:20px;bottom:92px;width:420px;height:640px;border:none;border-radius:14px;box-shadow:0 20px 40px rgba(2,6,23,.35);display:none;z-index:9999}
+#chat-header{position:fixed;right:20px;bottom:92px;display:none;background:#fff;border:1px solid #e7e9f3;border-bottom:none;width:420px;height:48px;border-top-left-radius:14px;border-top-right-radius:14px;display:none;align-items:center;justify-content:space-between;padding:0 10px;z-index:10001}
+#chat-header .title{display:flex;align-items:center;gap:8px;font-weight:800;color:var(--brand)}
+#chat-close{background:transparent;border:none;font-size:22px;color:#64748b}
+@media(max-width:520px){#chat-frame,#chat-header{right:10px;width:calc(100% - 20px);height:70vh}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <div class="badge">NAAC A | NBA Accredited Programs</div>
+    <div class="badge">Affiliated to JNTUH | Approved by AICTE</div>
+  </div>
+</div>
+
+<header class="header">
+  <div class="container">
+    <div class="logo">
+      <img src="https://cmrtc.ac.in/wp-content/uploads/2022/08/cmrtc-logo.png" alt="CMRTC Logo">
+      <strong>CMR Technical Campus</strong>
+    </div>
+    <nav class="nav" id="nav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#departments">Departments</a>
+      <a href="#admissions">Admissions</a>
+      <a href="#placements">Placements</a>
+      <a href="#news">News & Events</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button id="menu-btn">☰</button>
+  </div>
+</header>
+
+<section id="home" class="hero">
+  <div class="container">
+    <h1>Empowering Engineering Excellence</h1>
+    <p>Premier technical education with strong industry connect, research-driven learning, and student-centric culture in Hyderabad.</p>
+    <div class="hero-cta">
+      <a class="btn" href="#admissions">Apply Now</a>
+      <a class="btn alt" href="#placements">View Placements</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><h3>30+</h3><p>Programs</p></div>
+      <div class="stat"><h3>200+</h3><p>Recruiters</p></div>
+      <div class="stat"><h3>15k+</h3><p>Alumni</p></div>
+      <div class="stat"><h3>40 LPA</h3><p>Top Package</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <div class="container">
+    <h2>About CMRTC</h2>
+    <p class="sub">A leading institution in engineering and management education in Telangana, known for quality teaching, outcome-based learning, and placements.</p>
+    <div class="kpis">
+      <div class="kpi"><b>Established</b><div>2009</div></div>
+      <div class="kpi"><b>Accreditations</b><div>NAAC A, NBA</div></div>
+      <div class="kpi"><b>Affiliation</b><div>JNTUH</div></div>
+      <div class="kpi"><b>Approvals</b><div>AICTE</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="departments" class="section">
+  <div class="container">
+    <h2>Departments</h2>
+    <p class="sub">Explore undergraduate and postgraduate programs across key disciplines.</p>
+    <div class="grid-3">
+      <div class="card"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop" alt="" style="width:100%;height:160px;object-fit:cover;border-top-left-radius:14px;border-top-right-radius:14px"><div class="pad"><h3>CSE</h3><p>AI, ML, Data Science, Cyber Security specializations with modern labs.</p><a href="#">View Details →</a></div></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" alt="" style="width:100%;height:160px;object-fit:cover;border-top-left-radius:14px;border-top-right-radius:14px"><div class="pad"><h3>ECE</h3><p>VLSI, Embedded Systems, Communications with hands-on projects.</p><a href="#">View Details →</a></div></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1581091014534-6c0ae2f36c67?q=80&w=1200&auto=format&fit=crop" alt="" style="width:100%;height:160px;object-fit:cover;border-top-left-radius:14px;border-top-right-radius:14px"><div class="pad"><h3>Mechanical</h3><p>Design, Manufacturing, Thermal streams with modern workshops.</p><a href="#">View Details →</a></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="news" class="section">
+  <div class="container">
+    <h2>Announcements</h2>
+    <div class="ticker">
+      <div class="tag">Admissions Open</div>
+      <div class="tag">Campus Drive This Week</div>
+      <div class="tag">Academic Calendar Update</div>
+      <div class="tag">Scholarship Notifications</div>
+    </div>
+    <h2 style="margin-top:26px">News & Events</h2>
+    <div class="grid-3">
+      <div class="card"><div class="pad"><h3>Orientation 2025</h3><p>Welcome program for incoming batch with faculty interactions.</p><time>Aug 20, 2025</time></div></div>
+      <div class="card"><div class="pad"><h3>Hackathon</h3><p>24-hour coding challenge with industry mentors and prizes.</p><time>Aug 28–29, 2025</time></div></div>
+      <div class="card"><div class="pad"><h3>Alumni Talk</h3><p>Session on career paths and higher studies opportunities.</p><time>Sep 3, 2025</time></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="placements" class="section">
+  <div class="container">
+    <h2>Placements</h2>
+    <p class="sub">Consistent placements with reputed companies across domains.</p>
+    <div class="filters">
+      <button class="active" data-filter="all">All</button>
+      <button data-filter="cse">CSE</button>
+      <button data-filter="ece">ECE</button>
+      <button data-filter="mech">MECH</button>
+    </div>
+    <div class="placements">
+      <table class="table" id="place-table">
+        <thead><tr><th>Company</th><th>Role</th><th>CTC</th><th>Dept</th><th>Year</th></tr></thead>
+        <tbody>
+          <tr data-dept="cse"><td>Infosys</td><td>Systems Eng</td><td>4.5 LPA</td><td>CSE</td><td>2025</td></tr>
+          <tr data-dept="cse"><td>TCS</td><td>Digital</td><td>7.0 LPA</td><td>CSE</td><td>2025</td></tr>
+          <tr data-dept="ece"><td>Qualcomm</td><td>Design Intern</td><td>Intern</td><td>ECE</td><td>2025</td></tr>
+          <tr data-dept="mech"><td>Tata Motors</td><td>GET</td><td>5.5 LPA</td><td>MECH</td><td>2025</td></tr>
+          <tr data-dept="cse"><td>Amazon</td><td>SDE Intern</td><td>Intern</td><td>CSE</td><td>2025</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 style="margin-top:20px">Top Recruiters</h3>
+    <div class="recruiters">
+      <div class="rec">TCS</div>
+      <div class="rec">Infosys</div>
+      <div class="rec">Cognizant</div>
+      <div class="rec">Accenture</div>
+      <div class="rec">Amazon</div>
+    </div>
+  </div>
+</section>
+
+<section id="admissions" class="section">
+  <div class="container">
+    <h2>Admissions</h2>
+    <p class="sub">Undergraduate and postgraduate admissions with merit-based criteria and reservation policies as per norms.</p>
+    <div class="card">
+      <div class="pad">
+        <div class="searchbar">
+          <input id="prog" placeholder="Search program e.g., B.Tech CSE">
+          <button id="prog-btn">Search</button>
+        </div>
+        <div id="prog-result" class="list" style="margin-top:12px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Campus Life</h2>
+    <p class="sub">Clubs, labs, sports, and vibrant events foster all-round development.</p>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1596495578065-8a35f6a3cfa4?q=80&w=1200&auto=format&fit=crop" alt="">
+      <img src="https://images.unsplash.com/photo-1539874754764-5a96559165b0?q=80&w=1200&auto=format&fit=crop" alt="">
+      <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=1200&auto=format&fit=crop" alt="">
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="container">
+    <div class="cta-band">
+      <div class="row">
+        <div>
+          <h2 style="margin:0 0 6px">Contact Us</h2>
+          <div>CMR Technical Campus, Hyderabad, Telangana</div>
+          <div>Phone: +91-00000 00000 | Email: info@cmrtc.ac.in</div>
+        </div>
+        <a class="btn" href="mailto:info@cmrtc.ac.in">Email</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div>
+      <h4>CMR Technical Campus</h4>
+      <p>A student-first campus focused on academics, research, and placements.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <div class="list">
+        <a href="#admissions">Admissions</a>
+        <a href="#placements">Placements</a>
+        <a href="#departments">Departments</a>
+      </div>
+    </div>
+    <div>
+      <h4>Student Help</h4>
+      <div class="list">
+        <a href="#">T&P Cell</a>
+        <a href="#">Examinations</a>
+        <a href="#">Downloads</a>
+      </div>
+    </div>
+  </div>
+  <div class="footbar">© 2025 CMR Technical Campus (Demo)</div>
+</footer>
+
+<button id="chat-toggle" aria-label="Open Chat">💬</button>
+<div id="chat-header"><div class="title">SmartQuery</div><button id="chat-close" aria-label="Close">×</button></div>
+<iframe id="chat-frame" src="https://collegegpt-version-29.vercel.app/student-gpt"></iframe>
+
+<script>
+const menuBtn=document.getElementById('menu-btn');const nav=document.getElementById('nav');menuBtn.addEventListener('click',()=>nav.classList.toggle('open'));
+const filters=[...document.querySelectorAll('.filters button')];const rows=[...document.querySelectorAll('#place-table tbody tr')];filters.forEach(b=>b.addEventListener('click',()=>{filters.forEach(x=>x.classList.remove('active'));b.classList.add('active');const f=b.dataset.filter;rows.forEach(r=>{r.style.display=(f==='all'||r.dataset.dept===f)?'table-row':'none'})}));
+const programs=[{name:'B.Tech CSE',seats:180,duration:'4 Years',mode:'Regular'},{name:'B.Tech ECE',seats:120,duration:'4 Years',mode:'Regular'},{name:'M.Tech CSE',seats:24,duration:'2 Years',mode:'PG'}];
+const progInput=document.getElementById('prog');const progBtn=document.getElementById('prog-btn');const progRes=document.getElementById('prog-result');progBtn.addEventListener('click',()=>{const q=(progInput.value||'').toLowerCase();progRes.innerHTML='';const hits=programs.filter(p=>p.name.toLowerCase().includes(q));if(!hits.length){progRes.innerHTML='<div class="item">No results</div>';return}hits.forEach(p=>{const el=document.createElement('div');el.className='item';el.innerHTML=`<div><b>${p.name}</b><div>Seats: ${p.seats} • Duration: ${p.duration} • ${p.mode}</div></div>`;progRes.appendChild(el)})});
+const chatBtn=document.getElementById('chat-toggle');const chatFrame=document.getElementById('chat-frame');const chatHead=document.getElementById('chat-header');const chatClose=document.getElementById('chat-close');
+function openChat(){chatFrame.style.display='block';chatHead.style.display='flex'}
+function closeChat(){chatFrame.style.display='none';chatHead.style.display='none'}
+chatBtn.addEventListener('click',()=>{if(chatFrame.style.display==='block'){closeChat()}else{openChat()}})
+chatClose.addEventListener('click',closeChat);
+</script>
+
+</body>
+</html>
